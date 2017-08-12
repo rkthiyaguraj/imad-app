@@ -21,6 +21,8 @@ app.get('/article-three',function(req,res){
     res.send('article three responded');
 }
 );
+var element=document=getElementById('main-text');
+element.innerHTML='New Value Added';
 
 
 app.get('/ui/index.html', function (req, res) {
