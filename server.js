@@ -14,8 +14,21 @@ var config={
 };
 
 var pool=new Pool(config);
+
+
 var app = express();
 app.use(morgan('combined'));
+
+
+app.get('/test.db',function(req,res){
+    pool.query('select * from test', function(err,result){
+        if (err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send(JSON.stringfy(result));
+        }
+    });
+});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -36,15 +49,6 @@ app.get('/article-three',function(req,res){
 
 
 
-app.get('/test.db',function(req,res){
-    pool.query('select * from test', function(err,result){
-        if (err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send(JSON.stringfy(result));
-        }
-    });
-});
         }
         
         }
