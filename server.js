@@ -10,8 +10,8 @@ var config={
      database : 'rkthiyaguraj',
      host : 'db.imad.hasura_app.io',
      port : '5432',
-     password : process.env.DB_PASSWORD;
-}
+     password : process.env.DB_PASSWORD
+};
 }
 var app = express();
 app.use(morgan('combined'));
