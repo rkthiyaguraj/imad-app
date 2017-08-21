@@ -20,15 +20,6 @@ var app = express();
 app.use(morgan('combined'));
 
 
-app.get('/test.db',function(req,res){
-    pool.query('select * from test', function(err,result){
-        if (err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send(JSON.stringify(result));
-        }
-    });
-});
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -49,6 +40,15 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
+app.get('/test.db',function(req,res){
+    pool.query('select * from test', function(err,result){
+        if (err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send(JSON.stringify(result));
+        }
+    });
+});
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
